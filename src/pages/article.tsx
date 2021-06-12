@@ -1,17 +1,25 @@
 import Article from '../components/Article'
+import SearchBox from '../components/SearchBox'
 
 export default function ArticleList({ allArticles }) {
-  return allArticles.map((article, index) => {
-    return (
-      <Article
-        key={index}
-        title={article.title}
-        description={article.description}
-        purpose_category={article.purpose_category}
-        tag={article.tag}
-      />
-    )
-  })
+  return (
+    <>
+      <SearchBox />
+      <div>
+        {allArticles.map((article: Array, index: number) => {
+          return (
+            <Article
+              key={index}
+              title={article.title}
+              description={article.description}
+              purpose_category={article.purpose_category}
+              tag={article.tag}
+            />
+          )
+        })}
+      </div>
+    </>
+  )
 }
 
 export async function getStaticProps() {
